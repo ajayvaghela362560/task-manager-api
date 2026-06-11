@@ -1,5 +1,9 @@
+node_modules
+dist
+coverage
+uploads
 .env
 .env.*
-uploads/
-server
-bin/
+!.env.example
+Dockerfile
+.dockerignore
