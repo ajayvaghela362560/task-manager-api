@@ -3,8 +3,17 @@
 REST API for TaskFlow, a task management application. Built with **NestJS 11
 (TypeScript), TypeORM and PostgreSQL 16**.
 
-Companion frontend (Next.js): **task-manager-web** — deploy it separately and
-point its `NEXT_PUBLIC_API_URL` at this API.
+Companion frontend (Next.js):
+[task-manager-web](https://github.com/ajayvaghela362560/task-manager-web) —
+deploy it separately and point its `NEXT_PUBLIC_API_URL` at this API.
+
+## Live demo
+
+**API:** https://task-manager-api-q446.onrender.com — health check at
+[`/healthz`](https://task-manager-api-q446.onrender.com/healthz)
+
+Hosted on Render's free tier — the first request after an idle period takes
+~30s while the instance wakes.
 
 ## Features
 
