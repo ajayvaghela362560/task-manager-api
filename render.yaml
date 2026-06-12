@@ -1,0 +1,31 @@
+# Render Blueprint — deploys the API plus a managed PostgreSQL database.
+# In the Render dashboard: New → Blueprint → point at this repository.
+# After the first deploy, set CORS_ORIGIN to your Vercel frontend URL.
+
+databases:
+  - name: taskflow-db
+    plan: free
+    databaseName: taskdb
+    user: taskuser
+
+services:
+  - type: web
+    name: taskflow-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: taskflow-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_TTL
+        value: 168h
+      - key: CORS_ORIGIN
+        value: https://your-frontend.vercel.app # ← change after deploying the web app
+      - key: ADMIN_EMAILS
+        value: admin@example.com
+      - key: UPLOAD_DIR
+        value: /app/uploads
